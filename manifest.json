@@ -1,0 +1,20 @@
+{
+  "name": "Test1",
+  "description": "My first Chrome App.",
+  "version": "0.1",
+  "manifest_version": 2,
+  "permissions": ["<all_urls>", {"fileSystem": ["write","retainEntries","directory"]},"storage"],
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "icons": {"128": "icon_128.png" },
+  "file_handlers": {
+   "text": {
+     "types": [
+         "text/*"
+     ]
+   }
+ }
+}
