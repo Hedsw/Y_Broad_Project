@@ -1,24 +1,9 @@
-    // var button = document.getElementById('btn');
-    //  button.onclick = function(e) {
-    //     var url = "www.naver.com"
-    //   location.href= url
-    //  }
-    //
-    // Path: <input type="text" id="file_path" readonly>
-    // <span>Size: <span id="file_size"></span> bytes</span>
-    // <output></output>
-    // <textarea></textarea>
-    // <button id ="btn">Choose File</button>
-    // <button id ="btn2">Choose Directory</button>
-    //  <p><button id="save_file" disabled>Save As</button></p>
 
-  var Ch_file = document.querySelector('#btn');
-  var Ch_dir = document.querySelector('#btn2');
+  var ch_file = document.querySelector('#btn');
   var httpRequest = document.querySelector('#btn3');
   var playVideo = document.querySelector('#play');
-  var Sv_file = document.querySelector('#save_file');
+  var sv_file = document.querySelector('#save_file');
   var output = document.querySelector('output');
-  var textarea = document.querySelector('textarea');
   var chosenEntry = null;
 
   var blobList = [];
@@ -29,9 +14,9 @@
 
   var entry;
 
-  playVideo.addEventListener('click', function(){
-    console.log(blobList)
-    blobList.forEach( function(videoBlob){
+  playVideo.addEventListener('click', function() {
+   // console.log(blobList)
+    blobList.forEach(function(videoBlob) {
       var video = document.createElement('video')
       video.setAttribute("controls","controls")   
       video.autoplay = true;
@@ -40,7 +25,7 @@
     })
   })
   
-  Ch_file.addEventListener('click', function(e) {
+  ch_file.addEventListener('click', function(e) {
     var accepts = [{
       mimeTypes: ['text/*'],
       extensions: ['js', 'css', 'txt', 'html', 'xml', 'tsv', 'csv', 'rtf', "jpg", "gif", "crx","pdf"]
@@ -53,11 +38,10 @@
       chrome.storage.local.set({'chosenFile': chrome.fileSystem.retainEntry(theEntry)});
       entry = theEntry;
       loadFileEntry(theEntry);
-      
     });
   });
   
-  httpRequest.addEventListener('click', function(){
+  httpRequest.addEventListener('click', function() {
     var request = new XMLHttpRequest();
     request.responseType = "arraybuffer"
     request.onload = function(e) {
@@ -81,6 +65,8 @@
       blobList.push(blob)
     }
 })
+
+
 //https://developer.mozilla.org/en-US/docs/Web/API/File <- 이걸로 보면됨
   function loadFileEntry(Data) {
     chosenEntry = Data;
