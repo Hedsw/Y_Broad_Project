@@ -38,7 +38,6 @@
       video.src = window.URL.createObjectURL(videoBlob);
       document.body.appendChild(video)
     })
-    
   })
   
   Ch_file.addEventListener('click', function(e) {
@@ -57,8 +56,6 @@
       
     });
   });
-
-
   
   httpRequest.addEventListener('click', function(){
     var request = new XMLHttpRequest();
