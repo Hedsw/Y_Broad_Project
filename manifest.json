@@ -3,7 +3,7 @@
   "description": "My first Chrome App.",
   "version": "0.1",
   "manifest_version": 2,
-  "permissions": ["<all_urls>", {"fileSystem": ["write","retainEntries","directory"]},"storage"],
+  "permissions": ["<all_urls>", {"fileSystem": ["write","retainEntries","directory"]},"storage","identity","https://project-dandelion.firebaseio.com/"],
   "app": {
     "background": {
       "scripts": ["background.js"]

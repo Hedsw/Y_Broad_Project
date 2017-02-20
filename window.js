@@ -3,6 +3,8 @@ var load_video = document.querySelector('#load_video');
 var playVideo = document.querySelector('#play_video');
 var sv_file = document.querySelector('#save_file');
 var output = document.querySelector('output');
+var importData = document.querySelector('#importData'); // 뭐 열었는지 보여주는거
+var import_data = document.querySelector('#import_data'); // 버튼 
 var blobList = [];
 var entry;
 
@@ -47,6 +49,17 @@ playVideo.addEventListener('click', function() {
   })
 })
 
+
+
+
+
+// function _imp() {
+//   var _myImportData = JSON.parse(this.result);
+//   // 여기다가 받은 데이터 저장하기!!
+//   console.log(_myImportData);
+//   importData.value = '';
+// }
+
 //https://developer.mozilla.org/en-US/docs/Web/API/File <- 이걸로 보면됨
 
 ch_file.addEventListener('click', function(e) {
@@ -65,17 +78,3 @@ ch_file.addEventListener('click', function(e) {
   });
 });
 
-  // function displayEntryData(theEntry) {
-  //   if (theEntry.isFile) {
-  //     chrome.fileSystem.getDisplayPath(theEntry, function(path) {
-  //       document.querySelector('#file_path').value = path;
-  //     });
-  //     theEntry.getMetadata(function(data) {
-  //       document.querySelector('#file_size').textContent = data.size;
-  //     });
-  //   }
-  //   else {
-  //     document.querySelector('#file_path').value = theEntry.fullPath;
-  //     document.querySelector('#file_size').textContent = "N/A";
-  //   }
-  // }
