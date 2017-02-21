@@ -69,21 +69,21 @@ ch_file.addEventListener('click', function(e) {
 });
 
 // var defaultDatabase = firebase.database();
-//firebase.database.enableLogging(true);
+// firebase.database.enableLogging(true);
 
-Firebase.INTERNAL.forceWebSockets();
-var database = firebase.database();
+// Firebase.INTERNAL.forceWebSockets();
+// var database = firebase.database();
 
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAXO8kgV-tgvtRwyUmF2YUoH2qQUMLhJMc",
-    authDomain: "project-dandelion.firebaseapp.com",
-    databaseURL: "https://project-dandelion.firebaseio.com",
-    storageBucket: "project-dandelion.appspot.com",
-    messagingSenderId: "551863919971"
-  };
-  firebase.initializeApp(config);
+//   // Initialize Firebase
+//   var config = {
+//     apiKey: "AIzaSyAXO8kgV-tgvtRwyUmF2YUoH2qQUMLhJMc",
+//     authDomain: "project-dandelion.firebaseapp.com",
+//     databaseURL: "https://project-dandelion.firebaseio.com",
+//     storageBucket: "project-dandelion.appspot.com",
+//     messagingSenderId: "551863919971"
+//   };
+//   firebase.initializeApp(config);
 
 
-var rootRef = firebase.database().ref();
+// var rootRef = firebase.database().ref();
 

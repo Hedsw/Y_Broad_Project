@@ -17,6 +17,8 @@
          "text/*"
      ]
    }
- }
+ },
+  "kiosk_enabled" : true,
+  "kiosk_only" : true
 }
 
