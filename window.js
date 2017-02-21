@@ -49,31 +49,54 @@ playVideo.addEventListener('click', function() {
   })
 })
 
-
 //https://developer.mozilla.org/en-US/docs/Web/API/File <- 이걸로 보면됨
 
 ch_file.addEventListener('click', function(e) {
-  // var accepts = [{
-  //   mimeTypes: ['text/*'],
-  //   extensions: ['js', 'css', 'txt', 'html', 'xml', 'tsv', 'csv', 'rtf', "jpg", "gif", "crx","pdf"]
-  // }];
-  // chrome.fileSystem.chooseEntry({type: 'openWritableFile', accepts: accepts}, function(theEntry) {
-  //   if(!theEntry) {
-  //     output.textContent = 'No file selected.';
-  //     return;
-  //   }
-  // chrome.fileSystem.requestFileSystem({type: ''})
+  var accepts = {
+    type: 'openDirectory',
+    'accepts':[{ mimeTypes:['video/*']}, // object (curly bracket하는거)
+    {'description':'This is example'}, // string (bracket만 하는거)
+    {'extensions' :['webm','mp4']}] 
+  }
+
+  chrome.fileSystem.chooseEntry(accepts, function(theEntry) {
+    var dirReader = theEntry.createReader();
+    console.log(theEntry+" 1");
+    if(!theEntry) {
+      output.textContent = 'No file selected.';
+      return;
+    }
+    console.log(dirReader+" 2");  
   
-  //   chrome.storage.local.set({'chosenFile': chrome.fileSystem.retainEntry(theEntry)});
-  //   entry = theEntry;
-  //   loadFileEntry(theEntry);
-  // });
-  //var test ="http://www.ioncannon.net/examples/vp8-webm/big_buck_bunny_480p.webm"
-  chrome.fileSystem.requestFileSystem(writable, function(fs) {
-    console.log(fs);
+  chrome.fileSystem.isWritableEntry(theEntry, function(reserved) {
+    console.log(reserved+" 3");
+  })
+  
+  var entries = [];
+  dirReader.readEntries(function(results) {
+    //console.log(results);
+    results.forEach(function(item) {
+      entries.push(item.fullPath);
+    })
+
+     var find = "Korea" // 여기다가 찾고 싶은 것의 이름을 넣으면 되! //하나의 파일만 찾아 내고 싶을 때,
+     var filter = entries.filter(function(item, index, array) {
+          return !!~item.search(find);
+      });
+      console.log(filter+" 4");
   })
 
-});
+  chrome.fileSystem.getDisplayPath(theEntry, function(reserved2) { //File Path 어디인지 알아 낼 때
+    console.log(reserved2+" 5");
+  })
+
+})
+
+    // chrome.fileSystem.restoreEntry("test", function (reserved3) {
+    //   console.log(reserved3);
+    // }) // 이런거에서 id는 어디에서 가져 오는거지?
+
+})
 
 
 // var defaultDatabase = firebase.database();

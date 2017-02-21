@@ -23,6 +23,9 @@ Extension에서는 저 Permission만 넣고 파이어베이스 일반 웹에서 
 
 
 
+
+3. RequestFileSystem - 크롬 OS에서 작동 하는 것 같음 (맥, Window에서 작동 X)
+
 아래 부분이 중요한 부분이야!
 
 requestFileSystem
