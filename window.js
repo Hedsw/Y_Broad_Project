@@ -50,16 +50,6 @@ playVideo.addEventListener('click', function() {
 })
 
 
-
-
-
-// function _imp() {
-//   var _myImportData = JSON.parse(this.result);
-//   // 여기다가 받은 데이터 저장하기!!
-//   console.log(_myImportData);
-//   importData.value = '';
-// }
-
 //https://developer.mozilla.org/en-US/docs/Web/API/File <- 이걸로 보면됨
 
 ch_file.addEventListener('click', function(e) {
@@ -77,4 +67,23 @@ ch_file.addEventListener('click', function(e) {
     loadFileEntry(theEntry);
   });
 });
+
+// var defaultDatabase = firebase.database();
+//firebase.database.enableLogging(true);
+
+Firebase.INTERNAL.forceWebSockets();
+var database = firebase.database();
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAXO8kgV-tgvtRwyUmF2YUoH2qQUMLhJMc",
+    authDomain: "project-dandelion.firebaseapp.com",
+    databaseURL: "https://project-dandelion.firebaseio.com",
+    storageBucket: "project-dandelion.appspot.com",
+    messagingSenderId: "551863919971"
+  };
+  firebase.initializeApp(config);
+
+
+var rootRef = firebase.database().ref();
 
