@@ -53,20 +53,28 @@ playVideo.addEventListener('click', function() {
 //https://developer.mozilla.org/en-US/docs/Web/API/File <- 이걸로 보면됨
 
 ch_file.addEventListener('click', function(e) {
-  var accepts = [{
-    mimeTypes: ['text/*'],
-    extensions: ['js', 'css', 'txt', 'html', 'xml', 'tsv', 'csv', 'rtf', "jpg", "gif", "crx","pdf"]
-  }];
-  chrome.fileSystem.chooseEntry({type: 'openFile', accepts: accepts}, function(theEntry) {
-    if(!theEntry) {
-      output.textContent = 'No file selected.';
-      return;
-    }
-    chrome.storage.local.set({'chosenFile': chrome.fileSystem.retainEntry(theEntry)});
-    entry = theEntry;
-    loadFileEntry(theEntry);
-  });
+  // var accepts = [{
+  //   mimeTypes: ['text/*'],
+  //   extensions: ['js', 'css', 'txt', 'html', 'xml', 'tsv', 'csv', 'rtf', "jpg", "gif", "crx","pdf"]
+  // }];
+  // chrome.fileSystem.chooseEntry({type: 'openWritableFile', accepts: accepts}, function(theEntry) {
+  //   if(!theEntry) {
+  //     output.textContent = 'No file selected.';
+  //     return;
+  //   }
+  // chrome.fileSystem.requestFileSystem({type: ''})
+  
+  //   chrome.storage.local.set({'chosenFile': chrome.fileSystem.retainEntry(theEntry)});
+  //   entry = theEntry;
+  //   loadFileEntry(theEntry);
+  // });
+  //var test ="http://www.ioncannon.net/examples/vp8-webm/big_buck_bunny_480p.webm"
+  chrome.fileSystem.requestFileSystem(writable, function(fs) {
+    console.log(fs);
+  })
+
 });
+
 
 // var defaultDatabase = firebase.database();
 // firebase.database.enableLogging(true);

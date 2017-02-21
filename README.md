@@ -21,3 +21,13 @@ Extension에서는 저 Permission만 넣고 파이어베이스 일반 웹에서 
 관련 링크 1. - https://developer.chrome.com/apps/fileSystem#method-requestFileSystem
 관련 링크 2. - https://developer.chrome.com/apps/manifest/kiosk_enabled
 
+
+
+아래 부분이 중요한 부분이야!
+
+requestFileSystem
+
+chrome.fileSystem.requestFileSystem(object options, function callback)
+Since Chrome 44.
+
+Requests access to a file system for a volume represented by options.volumeId. If options.writable is set to true, then the file system will be writable. Otherwise, it will be read-only. The writable option requires the "fileSystem": {"write"} permission in the manifest. Available to kiosk apps running in kiosk session only. For manual-launch kiosk mode, a confirmation dialog will be shown on top of the active app window. In case of an error, fileSystem will be undefined, and chrome.runtime.lastError will be set.
