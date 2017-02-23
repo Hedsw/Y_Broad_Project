@@ -6,12 +6,12 @@ var output = document.querySelector('output');
 var importData = document.querySelector('#importData'); // 뭐 열었는지 보여주는거
 var import_data = document.querySelector('#import_data'); // 버튼 
 var write_file = document.querySelector("#write_file"); //Blob을 쓰는걸 해보기 위해서 만든 버튼! 
-
 var blobList = []; //여기다가 여러게가 들어가!!
 var entry;
 function errorHandler(e) {
   console.error(e);
 }
+
 // 우선 Load_Video로 blobList에 있는 걸 우선 받아오고, 그 다음 이거 실행하면 내가 원하는 곳에 다운이 가능!
 //실행 순서.. 1. load_video로 blobList에 넣는다 2. write File 버튼 눌러서 디렉토리 지정해서 파일 저장한다.
 write_file.addEventListener('click', function() {
@@ -24,7 +24,7 @@ write_file.addEventListener('click', function() {
   //console.log(blobList[0]);
   chrome.fileSystem.chooseEntry(accepts, function(theEntry) {
     chrome.fileSystem.getWritableEntry(theEntry, function(theEntry2) {
-      theEntry2.getFile('Test2.webm', {create:true}, function(theEntry3){
+      theEntry2.getFile('Test2.webm', {create:true}, function(theEntry3) {
         theEntry3.createWriter(function(writer) {
           writer.write(blobList[0]);
         })
@@ -48,11 +48,8 @@ load_video.addEventListener('click', function() {
   request.responseType = "arraybuffer"
   request.onload = function(e) {
     blob = new Blob([request.response], {type: "video/webm"});
-   
     blobList.push(blob)      
   }
-
-  
   var request2 = new XMLHttpRequest()
   request2.responseType = "arraybuffer"
   request2.onload = function(e) {
@@ -65,6 +62,17 @@ load_video.addEventListener('click', function() {
   request.open("GET", vid, true)
   request.send()
 
+//var val = document.getElementById('id_field').value;
+
+  if(request.readyState && request2.readyState) {
+    console.log("First Video is Successfully loaded");
+    document.getElementById('result').innerHTML ="videos are successfully loaded. \n";
+  }
+//  if(request2.readyState) {
+//     console.log("Second Video is Successfully loaded");
+//     document.getElementById('result').innerHTML = "Second video is successfully loaded.";
+//  }
+
 })
   
 //play videos which are load at load_video function at Chrome App 
@@ -76,7 +84,9 @@ playVideo.addEventListener('click', function() {
     video.autoplay = true;
     video.src = window.URL.createObjectURL(videoBlob);
     document.body.appendChild(video)
+    
   })
+   
 })
 
 //https://developer.mozilla.org/en-US/docs/Web/API/File <- 이걸로 보면됨
