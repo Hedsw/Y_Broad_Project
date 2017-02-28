@@ -1,5 +1,5 @@
 # Project_dandelion
-By Kevin and Yunhyeok 
+By Kevin and Yunhyeok
 
 Feb 22 기록
 1. Firebase랑 연동
@@ -25,8 +25,13 @@ Extension에서는 저 Permission만 넣고 파이어베이스 일반 웹에서 
 
 
 4. 해야 할 것..
- 4-1)Blob 객체 파일 받아서.. 파일로 변환 하고 그거를 해당 디렉터리에 저장 - 완료 
+ 4-1)Blob 객체 파일 받아서.. 파일로 변환 하고 그거를 해당 디렉터리에 저장 - 완료
 
- 4-2)삭제도 하기 
+ 4-2)삭제도 하기
 
+Feb 28 기록
 
+1. 아두이노에다가 Chronium 깔고,
+2. 거기다가 디버그가 되는 것을 확인하고, Firebase랑 연동해서
+Window.onError? 라는 것이 있는데, 그걸 Firebase에 보내서 그 에러를 보내서 확인하는 것이 가장 좋은 방법인것 같으니까
+그걸로 다시 해보기.
